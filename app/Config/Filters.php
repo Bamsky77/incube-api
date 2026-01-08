@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'apiKey' => \App\Filters\ApiKeyFilter::class,
     ];
 
     /**
@@ -106,5 +107,13 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+    // ini filter baru yang kamu tambahkan
+    'apiKey' => [
+        'before' => [
+            'api/*'
+        ],
+    ],
+];
+
 }

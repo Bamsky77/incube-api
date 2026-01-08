@@ -4,11 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ServiceModel extends Model
+class ServicesModel extends Model
 {
     protected $table      = 'services';
     protected $primaryKey = 'id';
 
+    // pakai nama kolom yang bener
     protected $allowedFields = ['title', 'description'];
 
     protected $useTimestamps = true;

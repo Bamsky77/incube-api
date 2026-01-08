@@ -107,10 +107,10 @@ class Database extends Config
     //     */
 public array $default = [
     'DSN'      => '',
-    'hostname' => '127.0.0.1',        // boleh 'localhost' juga
+    'hostname' => '127.0.0.1',
     'username' => 'root',
     'password' => '',
-    'database' => 'incube-profile',   // SAMA persis dengan nama DB di HeidiSQL
+    'database' => 'incube_company',   
     'DBDriver' => 'MySQLi',
     'DBPrefix' => '',
     'pConnect' => false,
@@ -124,6 +124,7 @@ public array $default = [
     'failover' => [],
     'port'     => 3306,
 ];
+
 
 
     //    /**

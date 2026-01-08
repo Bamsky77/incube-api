@@ -38,3 +38,9 @@ $routes->post('admin/portfolio/update/(:num)', 'Admin::updatePortfolio/$1');
 
 $routes->get('admin/portfolio/delete/(:num)', 'Admin::deletePortfolio/$1');
 
+$routes->group('api', ['filter' => 'apiKey'], function($routes) {
+    $routes->get('services', 'Api\Services::index');
+    $routes->get('services/(:num)', 'Api\Services::show/$1');
+});
+
+
