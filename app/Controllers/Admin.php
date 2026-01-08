@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ServiceModel;
+use App\Models\PortfolioModel;
 
 class Admin extends BaseController
 {
@@ -83,5 +84,69 @@ class Admin extends BaseController
         $model->delete($id);
 
         return redirect()->to('/admin/services');
+    }
+
+    public function portfolio()
+    {
+        $model = new PortfolioModel();
+
+        $data['portfolios'] = $model->orderBy('id', 'DESC')->findAll();
+
+        return view('admin/portfolio_list', $data);
+    }
+
+    // FORM TAMBAH PORTFOLIO
+    public function createPortfolio()
+    {
+        return view('admin/portfolio_form');
+    }
+
+    // SIMPAN DATA BARU
+    public function storePortfolio()
+    {
+        $model = new PortfolioModel();
+
+        $data = [
+            'title'       => $this->request->getPost('title'),
+            'description' => $this->request->getPost('description'),
+        ];
+
+        $model->insert($data);
+
+        return redirect()->to('/admin/portfolio');
+    }
+
+    // FORM EDIT
+    public function editPortfolio($id)
+    {
+        $model = new PortfolioModel();
+
+        $data['portfolio'] = $model->find($id);
+
+        return view('admin/portfolio_form', $data);
+    }
+
+    // UPDATE DATA
+    public function updatePortfolio($id)
+    {
+        $model = new PortfolioModel();
+
+        $data = [
+            'title'       => $this->request->getPost('title'),
+            'description' => $this->request->getPost('description'),
+        ];
+
+        $model->update($id, $data);
+
+        return redirect()->to('/admin/portfolio');
+    }
+
+    // HAPUS DATA
+    public function deletePortfolio($id)
+    {
+        $model = new PortfolioModel();
+        $model->delete($id);
+
+        return redirect()->to('/admin/portfolio');
     }
 }

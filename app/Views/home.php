@@ -167,37 +167,35 @@
 
 
     <!-- PORTFOLIO SECTION -->
+       <!-- PORTFOLIO SECTION (DINAMIS) -->
     <section id="portfolio" class="py-14 bg-white border-y border-slate-200">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-bold mb-2">Portfolio Singkat</h2>
                 <p class="text-slate-600 text-sm">
-                    Contoh proyek yang pernah dikerjakan (bisa kamu isi sesuai tugas).
+                    Contoh proyek yang pernah dikerjakan oleh IncubeSolutions.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 text-sm">
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                    <p class="font-semibold mb-1">Sistem Informasi Akademik</p>
-                    <p class="text-slate-600 text-xs">
-                        Aplikasi pengelolaan data siswa, guru, dan nilai berbasis web.
+                <?php if (!empty($portfolios)): ?>
+                    <?php foreach ($portfolios as $item): ?>
+                        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-semibold mb-1"><?= esc($item['title']); ?></p>
+                            <p class="text-slate-600 text-xs">
+                                <?= esc($item['description']); ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-sm text-slate-500 col-span-3">
+                        Belum ada data portfolio. Silakan tambahkan melalui halaman administrator.
                     </p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                    <p class="font-semibold mb-1">Dashboard Penjualan</p>
-                    <p class="text-slate-600 text-xs">
-                        Dashboard monitoring penjualan harian dan bulanan untuk manajer.
-                    </p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                    <p class="font-semibold mb-1">Company Profile Perusahaan</p>
-                    <p class="text-slate-600 text-xs">
-                        Website profil perusahaan dengan fitur contact form dan galeri.
-                    </p>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
+
 
     <!-- CONTACT FORM SECTION -->
     <section id="contact" class="py-14">

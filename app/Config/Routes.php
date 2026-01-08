@@ -27,3 +27,14 @@ $routes->get('login', 'Auth::login');
 $routes->post('login', 'Auth::doLogin');
 $routes->get('logout', 'Auth::logout');
 
+// ADMIN - PORTFOLIO
+$routes->get('admin/portfolio', 'Admin::portfolio');
+
+$routes->get('admin/portfolio/create', 'Admin::createPortfolio');
+$routes->post('admin/portfolio/store', 'Admin::storePortfolio');
+
+$routes->get('admin/portfolio/edit/(:num)', 'Admin::editPortfolio/$1');
+$routes->post('admin/portfolio/update/(:num)', 'Admin::updatePortfolio/$1');
+
+$routes->get('admin/portfolio/delete/(:num)', 'Admin::deletePortfolio/$1');
+
