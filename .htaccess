@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Disable directory browsing
+Options -Indexes
+
+# Block any attempt to go up directories
+RewriteCond %{REQUEST_URI} \.\. [NC]
+RewriteRule .* - [F,L]
+
+# Block access to hidden files and directories (starting with a dot)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Block access to hidden directories via URL
+RewriteRule (^|/)\. - [F,L]
+
+# Redirect everything else to public/ if not already in public/
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
